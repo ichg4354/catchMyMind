@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev:server": "nodemon src/server.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,8 @@
   },
   "dependencies": {
     "express": "^4.17.1",
+    "pug": "^3.0.0",
     "socket.io": "^2.3.0"
-  }
+  },
+  "type": "module"
 }
