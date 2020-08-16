@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:server": "nodemon src/server.js"
+    "dev:server": "nodemon --exec babel-node src/server.js",
+    "dev:assets": "gulp"
   },
   "repository": {
     "type": "git",
@@ -17,11 +18,17 @@
   },
   "homepage": "https://github.com/ichg4354/catchMyMind#readme",
   "devDependencies": {
+    "gulp-sass": "^4.1.0",
+    "node-sass": "^4.14.1",
     "nodemon": "^2.0.4"
   },
   "dependencies": {
+    "@babel/node": "^7.10.5",
+    "@babel/register": "^7.10.5",
     "@fortawesome/fontawesome-free": "^5.14.0",
+    "babel-register": "^6.26.0",
     "express": "^4.17.1",
+    "gulp": "^4.0.2",
     "morgan": "^1.10.0",
     "pug": "^3.0.0",
     "socket.io": "^2.3.0"
