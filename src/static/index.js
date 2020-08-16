@@ -2,13 +2,14 @@ const socket = io.connect("/");
 
 function sendMessage(message) {
   socket.emit("newMessage", { message: message });
+  console.log(`YOU:${message}`)
 }
 
-function setnickName(nickname) {
-  socket.emit("setNickName", { nickname });
+function setNickname(nickname) {
+  socket.emit("newNickName", { nickname: nickname });
 }
 
-socket.on("messageNotification", ({ message,nickname }) =>
-  console.log(`${nickname}:  ${message}`)
+socket.on("sendMessage", ({ message, nickname }) =>
+  console.log(`${nickname}: ${message}`)
 );
-
+socket.on("messageSent", ({ message, me }) => console.log(`${me}: ${message}`));
