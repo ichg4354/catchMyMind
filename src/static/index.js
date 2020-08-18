@@ -12,4 +12,5 @@ function setNickname(nickname) {
 socket.on("sendMessage", ({ message, nickname }) =>
   console.log(`${nickname}: ${message}`)
 );
+
 socket.on("messageSent", ({ message, me }) => console.log(`${me}: ${message}`));

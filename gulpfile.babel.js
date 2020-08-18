@@ -2,6 +2,9 @@ import gulp from "gulp";
 import sass from "gulp-sass";
 import csso from "gulp-csso";
 import autoprefixer from "gulp-autoprefixer";
+import del from "del";
+
+sass.compiler = require("node-sass");
 
 const paths = {
   styles: {
@@ -25,10 +28,12 @@ function styles() {
     .pipe(gulp.dest(paths.styles.dest));
 }
 
+// const clear = () => del("/src/static");
+
 function watchFiles() {
   gulp.watch(paths.styles.watch, styles);
 }
 
 const dev = gulp.series([styles, watchFiles]);
 
-export default dev
+export default dev;
