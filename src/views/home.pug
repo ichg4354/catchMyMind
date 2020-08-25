@@ -5,10 +5,15 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Document
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-        link(rel="stylesheet", href="/styles/styles.css")
-    body
-        h1 THIS IS CATCH MY MIND
+        link(rel="stylesheet", href="styles/styles.css")
+    body.loggedOut
+        .body__loginInput
+            form#jsForm
+                input(type="text" placeholder="Whats Your Name")#jsInput
+                input(type="submit", value="SUBMIT")#jsSubmit
+        .body__greetingText
+            h1 WELCOME
         script(src="/socket.io/socket.io.js")
-        script(src="/index.js")
+        script(src="/js/main.js")
         
             

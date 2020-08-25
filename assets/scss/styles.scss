@@ -1,5 +1,33 @@
 body {
-  width: 50px;
-  height: 50px;
-  background-color: green;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .body__loginInput,
+  .body__greetingText {
+    display: none;
+  }
+  // &.loggedOut {
+  //   .body__loginInput {
+  //     display: block;
+  //   }
+  // }
+  // &.loggedIn {
+  //   .body__greetingText {
+  //     display: block;
+  //   }
+  // }
+}
+
+.loggedOut {
+  .body__loginInput {
+    display: block;
+  }
+}
+
+.loggedIn {
+  .body__greetingText {
+    display: block;
+  }
 }

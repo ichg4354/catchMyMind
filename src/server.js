@@ -1,6 +1,7 @@
 import Express from "express";
 import socketIO from "socket.io";
 import logger from "morgan";
+import { handleSocketConnection } from "./socketController.js";
 
 const port = 1001;
 
@@ -20,14 +21,4 @@ const server = app.listen(port, handleListen);
 
 const io = socketIO.listen(server);
 
-io.on("connection", (socket) => {
-  return (
-    socket.on("newMessage", ({ message }) =>
-      socket.broadcast.emit("sendMessage", {
-        message: message,
-        nickname: socket.nickname || "Unknown",
-      })
-    ),
-    socket.on("newNickName", ({ nickname }) => (socket.nickname = nickname))
-  );
-});
+io.on("connection", (socket) => handleSocketConnection(socket));

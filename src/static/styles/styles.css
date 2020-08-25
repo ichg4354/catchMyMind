@@ -1,1 +1,1 @@
-body{width:50px;height:50px;background-color:green}
+body{width:100vw;height:100vh;display:flex;justify-content:center;align-items:center}body .body__greetingText,body .body__loginInput{display:none}.loggedIn .body__greetingText,.loggedOut .body__loginInput{display:block}
