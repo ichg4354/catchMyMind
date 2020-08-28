@@ -9,8 +9,8 @@ const NICKNAME = "nickName";
 const nickName = localStorage.getItem(NICKNAME);
 
 const login = (nickName) => {
-  const socket = io.connect("/");
-  socket.emit("setNickname", { nickName: nickName });
+  window.socket = io.connect("/");
+  window.socket.emit("setNickname", { nickName: nickName });
 };
 
 const handleLoginFormSubmit = (e) => {

@@ -2,12 +2,15 @@ import Express from "express";
 import socketIO from "socket.io";
 import logger from "morgan";
 import { handleSocketConnection } from "./socketController.js";
+import events from "./events.js";
 
 const port = 1001;
 
 const app = Express();
 
-app.get("/", (req, res) => res.render("home"));
+app.get("/", (req, res) =>
+  res.render("home", { events: JSON.stringify(events) })
+);
 app.set("view engine", "pug");
 app.set("views", "src/views");
 app.use(Express.static("src/static"));
