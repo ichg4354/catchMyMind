@@ -11,8 +11,9 @@ html(lang="en")
             form#jsForm
                 input(type="text" placeholder="Whats Your Name")#jsInput
                 input(type="submit", value="SUBMIT")#jsSubmit
-        .body__greetingText
+        .body__gameContainer
             h1 WELCOME
+            div#jsNotifications
         script(src="/socket.io/socket.io.js")
         script(src="/js/main.js")
         script.

@@ -1,3 +1,4 @@
+import "./sockets.js";
 import "./login.js";
+import "./notifications.js";
 
-console.log(window.socket);

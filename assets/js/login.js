@@ -1,3 +1,5 @@
+import { socketInit } from "./sockets";
+
 const body = document.querySelector("body");
 const loginForm = document.getElementById("jsForm");
 const loginInput = document.getElementById("jsInput");
@@ -9,14 +11,13 @@ const NICKNAME = "nickName";
 const nickName = localStorage.getItem(NICKNAME);
 
 const login = (nickName) => {
-  window.socket = io.connect("/");
-  window.socket.emit("setNickname", { nickName: nickName });
+  document.socket = io.connect("/");
+  document.socket.emit("setNickname", { nickName: nickName });
 };
 
 const handleLoginFormSubmit = (e) => {
   e.preventDefault();
   const newNickName = loginInput.value;
-  console.log(newNickName);
   localStorage.setItem(NICKNAME, `${newNickName}`);
   loginInput.value = "";
   login(newNickName);
@@ -25,10 +26,8 @@ const handleLoginFormSubmit = (e) => {
 loginForm.addEventListener("submit", handleLoginFormSubmit);
 
 if (nickName == null) {
-  console.log(nickName);
   body.className = LOGGED_OUT;
 } else {
-  console.log(nickName);
   body.className = LOGGED_IN;
   login(nickName);
 }
