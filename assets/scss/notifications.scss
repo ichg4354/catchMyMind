@@ -1,0 +1,47 @@
+.gameContainer__notification {
+  position: fixed;
+  left: 30px;
+  bottom: -50px;
+}
+.gameContainer__notification div {
+  opacity: 0;
+  height: 5vh;
+  width: 17vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 35px;
+  margin-bottom: 10px;
+  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+    0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  animation: notification 0.5s ease-out forwards,
+    dissapear 0.5s ease-in forwards;
+  animation-delay: 0.2s, 2s;
+  span {
+    color: white;
+    font-size: 15px;
+  }
+}
+@keyframes notification {
+  0% {
+    transform: translateY(80px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-90px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-70px);
+    opacity: 1;
+  }
+}
+
+@keyframes dissapear {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
