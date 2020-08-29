@@ -11,6 +11,7 @@ const app = Express();
 app.get("/", (req, res) =>
   res.render("home", { events: JSON.stringify(events) })
 );
+
 app.set("view engine", "pug");
 app.set("views", "src/views");
 app.use(Express.static("src/static"));

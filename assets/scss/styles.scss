@@ -5,7 +5,7 @@ body {
   justify-content: center;
   align-items: center;
   .body__loginInput,
-  .body__greetingText {
+  .body__gameContainer {
     display: none;
   }
   // &.loggedOut {
@@ -27,7 +27,7 @@ body {
 }
 
 .loggedIn {
-  .body__greetingText {
+  .body__gameContainer {
     display: block;
   }
 }

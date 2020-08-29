@@ -1,4 +1,4 @@
-import { socketInit } from "./sockets";
+import { initSocket } from "./socket";
 
 const body = document.querySelector("body");
 const loginForm = document.getElementById("jsForm");
@@ -11,8 +11,9 @@ const NICKNAME = "nickName";
 const nickName = localStorage.getItem(NICKNAME);
 
 const login = (nickName) => {
-  document.socket = io.connect("/");
-  document.socket.emit("setNickname", { nickName: nickName });
+  window.socket = io.connect("/");
+  window.socket.emit("setNickname", { nickName: nickName });
+  initSocket();
 };
 
 const handleLoginFormSubmit = (e) => {

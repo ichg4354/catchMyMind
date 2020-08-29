@@ -4,4 +4,7 @@ export const handleSocketConnection = (socket) => {
     socket.nickName = nickName;
     socket.broadcast.emit("newUser", { nickName: nickName });
   });
+  socket.on("disconnect", function () {
+    socket.broadcast.emit("userDisconnect", { nickName: socket.nickName });
+  });
 };
