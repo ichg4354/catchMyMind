@@ -17,7 +17,6 @@ const login = (nickName) => {
 };
 
 const handleLoginFormSubmit = (e) => {
-  e.preventDefault();
   const newNickName = loginInput.value;
   localStorage.setItem(NICKNAME, `${newNickName}`);
   loginInput.value = "";
