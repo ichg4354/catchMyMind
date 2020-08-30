@@ -1,0 +1,32 @@
+.gameContainer__chat {
+  width: 25vw;
+  .chat__chats {
+    height: 70vh;
+    padding: 30px 20px;
+    background-color: whitesmoke;
+    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+      0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+    .sended {
+      color: black;
+    }
+    .received {
+      color: cadetblue;
+    }
+  }
+  .chat__input {
+    .input__form {
+      display: flex;
+      justify-content: center;
+      .form__sendText {
+        width: 100%;
+        background-color: whitesmoke;
+        border: none;
+        height: 5vh;
+        padding: 10px 20px;
+        box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+          0 8px 16px -8px rgba(0, 0, 0, 0.3),
+          0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+      }
+    }
+  }
+}

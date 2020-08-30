@@ -8,4 +8,11 @@ export const handleSocketConnection = (socket) => {
   socket.on("disconnect", function () {
     broadcast("userDisconnect", { nickName: socket.nickName });
   });
+  socket.on("message", function ({ message }) {
+    console.log(message);
+    broadcast("newMessage", {
+      nickName: socket.nickName,
+      message: message,
+    });
+  });
 };

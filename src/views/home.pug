@@ -8,12 +8,17 @@ html(lang="en")
         link(rel="stylesheet", href="styles/styles.css")
     body.loggedOut
         .body__loginInput
-            form#jsForm
-                input(type="text" placeholder="Whats Your Name")#jsInput
-                input(type="submit", value="SUBMIT")#jsSubmit
+            form.loginInput__form#jsForm
+                input(type="text" placeholder="Whats Your Name").form__nameInput#jsInput
         .body__gameContainer
-            h1 WELCOME
-            div.gameContainer__notification#jsNotifications
+            .gameContainer__chat
+                .chat__chats
+                    ul#jsChatUl
+                .chat__input
+                    form#jsSendTextForm.input__form
+                        input(type="text").form__sendText#jsSendText
+                        //- input(type="submit" value="Send").form__submit
+            .gameContainer__notification#jsNotifications
         script(src="/socket.io/socket.io.js")
         script(src="/js/main.js")
         script.
