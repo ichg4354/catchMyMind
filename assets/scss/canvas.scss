@@ -1,0 +1,61 @@
+.body__canvasContainer {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.canvasContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+canvas {
+  margin-top: 50px;
+  text-align: center;
+  width: 550px;
+  height: 550px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+}
+.control__controls {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+.control__controls .control_btns button {
+  all: unset;
+  padding: 5px 7px;
+  background-color: white;
+  border: 2px solid grey;
+  border-radius: 10px;
+  vertical-align: middle;
+  padding-top: 7px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+  min-width: 60px;
+  margin-top: 25px;
+}
+.control_btns button:active {
+  transform: scale(0.97);
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.19), 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.control__colors {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.control__colors .control__color {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  margin-right: 5px;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.clicked {
+  transform: scale(0.9);
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.5), 0 1px 3px rgba(0, 0, 0, 0.32);
+}
