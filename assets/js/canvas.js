@@ -134,9 +134,14 @@ function handleSaveBtnClick(event) {
   link.click();
 }
 
-function handleResetBtnClick() {
+const reset = () => {
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+};
+
+function handleResetBtnClick() {
+  getSocket().emit("resetBtnClicked");
+  reset();
 }
 
 if (canvas) {
@@ -173,4 +178,8 @@ export const handleMouseDown = ({ x, y, color }) => {
 
 export const handleFillPaintBtnClick = ({ color }) => {
   fillorPaintFunction(color);
+};
+
+export const handleResetBtnClickForSocket = () => {
+  reset();
 };

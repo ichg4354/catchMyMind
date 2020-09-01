@@ -4,6 +4,7 @@ import {
   handleMouseMove,
   handleMouseDown,
   handleFillPaintBtnClick,
+  handleResetBtnClickForSocket,
 } from "./canvas.js";
 export const getSocket = () => window.socket;
 
@@ -15,4 +16,5 @@ export const initSocket = () => {
   socket.on("mouseMove", handleMouseMove);
   socket.on("mouseDown", handleMouseDown);
   socket.on("fillPaintBtnClick", handleFillPaintBtnClick);
+  socket.on("resetBtnClick", handleResetBtnClickForSocket);
 };

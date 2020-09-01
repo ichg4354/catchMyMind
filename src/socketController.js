@@ -25,4 +25,7 @@ export const handleSocketConnection = (socket) => {
   socket.on("fillPaintBtnClicked", function ({ color }) {
     broadcast("fillPaintBtnClick", { color });
   });
+  socket.on("resetBtnClicked", function () {
+    broadcast("resetBtnClick");
+  });
 };
