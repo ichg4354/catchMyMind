@@ -1,6 +1,10 @@
 import { handleNewUser, handleUserDisconenct } from "./notifications";
 import { handleNewMessage } from "./chat.js";
-import { handleMouseMove, handleMouseDown } from "./canvas";
+import {
+  handleMouseMove,
+  handleMouseDown,
+  handleFillPaintBtnClick,
+} from "./canvas.js";
 export const getSocket = () => window.socket;
 
 export const initSocket = () => {
@@ -10,4 +14,5 @@ export const initSocket = () => {
   socket.on("newMessage", handleNewMessage);
   socket.on("mouseMove", handleMouseMove);
   socket.on("mouseDown", handleMouseDown);
+  socket.on("fillPaintBtnClick", handleFillPaintBtnClick);
 };

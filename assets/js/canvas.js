@@ -33,12 +33,10 @@ const startPainting = () => {
   painting = true;
 };
 const lineTo = (x, y) => {
-  console.log(`lineto ${(x, y)}`);
   ctx.lineTo(x, y);
   ctx.stroke();
 };
 const moveTo = (x, y) => {
-  console.log(`moveto ${(x, y)}`);
   ctx.beginPath();
   ctx.moveTo(x, y);
 };
@@ -47,7 +45,12 @@ function onMouseMove(event) {
   let x = event.offsetX;
   let y = event.offsetY;
   if (painting) {
-    getSocket().emit("mouseMoved", { x: x, y, y });
+    getSocket().emit("mouseMoved", {
+      x: x,
+      y: y,
+      color: ctx.strokeStyle,
+      brushSize: ctx.lineWidth,
+    });
     lineTo(x, y);
   } else {
   }
@@ -55,7 +58,7 @@ function onMouseMove(event) {
 function onMouseDown(event) {
   let x = event.offsetX;
   let y = event.offsetY;
-  getSocket().emit("mouseDowned", { x: x, y: y });
+  getSocket().emit("mouseDowned", { x: x, y: y, color: ctx.fillStyle });
   startPainting();
   moveTo(x, y);
 }
@@ -88,20 +91,33 @@ function addClickedMotion(e) {
   e.target.classList.add("clicked");
 }
 
-function handleFirstBtnClick() {
+const fillorPaintFunction = (color) => {
+  console.log("fillorPaintfunction");
+  ctx.fillStyle = color;
   if (filling == true) {
     filling = false;
+    console.log("filling = false");
     fillandPaintBtn.innerText = "FILL";
   } else {
     filling = true;
+    console.log("filling = true");
     fillandPaintBtn.innerText = "PAINT";
   }
+};
+
+function handleFirstBtnClick() {
+  getSocket().emit("fillPaintBtnClicked", { color: ctx.fillStyle });
+  fillorPaintFunction();
 }
 
-function handleCanvasClick() {
+function handleCanvasClick(color) {
+  const currentFillColor = ctx.fillStyle;
+  console.log(`${currentFillColor} and ${color}`);
+  console.log("filling");
   if (filling) {
     ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
   }
+  ctx.fillStyle = currentFillColor;
 }
 
 function handleCmCLick(event) {
@@ -141,10 +157,20 @@ Array.from(colors).forEach((color) => {
     COLOR.addEventListener("click", addClickedMotion);
 });
 
-export const handleMouseMove = ({ x, y }) => {
+export const handleMouseMove = ({ x, y, color, brushSize }) => {
+  const currentColor = ctx.strokeStyle;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = brushSize;
   lineTo(x, y);
+  ctx.strokeStyle = currentColor;
 };
 
-export const handleMouseDown = ({ x, y }) => {
+export const handleMouseDown = ({ x, y, color }) => {
   moveTo(x, y);
+  fillorPaintFunction(color);
+  handleCanvasClick(color);
+};
+
+export const handleFillPaintBtnClick = ({ color }) => {
+  fillorPaintFunction(color);
 };

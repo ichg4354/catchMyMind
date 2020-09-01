@@ -4,7 +4,7 @@ export const handleSocketConnection = (socket) => {
   const broadcast = (event, data) => socket.broadcast.emit(event, data);
   socket.on("setNickname", function ({ nickName }) {
     socket.nickName = nickName;
-    broadcast("newUser", { nickName: nickName });
+    broadcast("newUser", { nickName });
   });
   socket.on("disconnect", function () {
     broadcast("userDisconnect", { nickName: socket.nickName });
@@ -16,11 +16,13 @@ export const handleSocketConnection = (socket) => {
       message: message,
     });
   });
-  socket.on("mouseMoved", function ({ x, y }) {
-    broadcast("mouseMove", { x: x, y: y });
-
+  socket.on("mouseMoved", function ({ x, y, color, brushSize }) {
+    broadcast("mouseMove", { x, y, color, brushSize });
   });
-  socket.on("mouseDowned", function ({ x, y }) {
-    broadcast("mouseDown", { x: x, y: y });
+  socket.on("mouseDowned", function ({ x, y, color }) {
+    broadcast("mouseDown", { x, y, color });
+  });
+  socket.on("fillPaintBtnClicked", function ({ color }) {
+    broadcast("fillPaintBtnClick", { color });
   });
 };
