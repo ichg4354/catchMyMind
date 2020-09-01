@@ -113,7 +113,8 @@ function handleFirstBtnClick() {
 function handleCanvasClick(color) {
   const currentFillColor = ctx.fillStyle;
   console.log(`${currentFillColor} and ${color}`);
-  console.log("filling");
+  console.log(filling);
+  ctx.fillStyle = color;
   if (filling) {
     ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
   }
@@ -167,7 +168,6 @@ export const handleMouseMove = ({ x, y, color, brushSize }) => {
 
 export const handleMouseDown = ({ x, y, color }) => {
   moveTo(x, y);
-  fillorPaintFunction(color);
   handleCanvasClick(color);
 };
 
