@@ -3,6 +3,7 @@ import express from "express";
 import { chooseRandomWord } from "./words.js";
 
 let sockets = [];
+let gameStatus = false;
 
 export const handleSocketConnection = (socket, io) => {
   const broadcast = (event, data) => socket.broadcast.emit(event, data);
@@ -11,16 +12,35 @@ export const handleSocketConnection = (socket, io) => {
   const sendUpdate = () => superBroadcast("update", { sockets });
 
   const setLeader = () => {
-    const Leader = sockets[Math.floor(Math.random() * sockets.length)];
-    console.log(Leader.nickName);
+    const leader = sockets[Math.floor(Math.random() * sockets.length)];
+    return leader;
   };
 
+  const startGame = () => {
+    if (gameStatus === false) {
+      gameStatus = true;
+      let leader = setLeader();
+      let word = chooseRandomWord();
+      io.to(leader.id).emit("notifyLeader", { word });
+      superBroadcast("gameStart");
+    }
+  };
+
+  const stopGame = () => {
+    gameStatus = false;
+  };
   socket.on("setNickname", function ({ nickName }) {
     sockets.push({ id: socket.id, nickName: nickName, points: 0 });
     console.log(`${nickName} connected`);
     socket.nickName = nickName;
     broadcast("newUser", { nickName });
     sendUpdate();
+    if (sockets.length > 1) {
+      startGame();
+      console.log("more than one user is here! game start");
+    } else {
+      console.log("not enough plater is connected");
+    }
   });
 
   socket.on("disconnect", function () {
@@ -31,6 +51,9 @@ export const handleSocketConnection = (socket, io) => {
     );
     sockets = filteredSocket;
     sendUpdate();
+    if (sockets.length <= 1) {
+      stopGame();
+    }
   });
 
   socket.on("message", function ({ message }) {
