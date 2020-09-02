@@ -25,4 +25,4 @@ const server = app.listen(port, handleListen);
 
 const io = socketIO.listen(server);
 
-io.on("connection", (socket) => handleSocketConnection(socket));
+io.on("connection", (socket) => handleSocketConnection(socket, io));
