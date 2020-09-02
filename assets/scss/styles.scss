@@ -12,7 +12,8 @@ body {
   align-items: center;
   .body__loginInput,
   .body__gameContainer,
-  .body__canvasContainer {
+  .body__canvasContainer,
+  .body__boardContainer {
     display: none;
   }
   // &.loggedOut {
@@ -38,6 +39,9 @@ body {
     display: block;
   }
   .body__canvasContainer {
+    display: block;
+  }
+  .body__boardContainer {
     display: block;
   }
 }
