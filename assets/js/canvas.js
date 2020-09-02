@@ -133,7 +133,7 @@ function handleSaveBtnClick(event) {
   link.click();
 }
 
-const reset = () => {
+export const reset = () => {
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 };

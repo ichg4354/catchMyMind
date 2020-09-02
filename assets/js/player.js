@@ -1,7 +1,9 @@
 import { blockCanvasUse, enableCanvasUse } from "./canvas";
+import { reset } from "./canvas.js";
 
 export const handleGameStart = () => {
   console.log("game has started");
+  reset();
   blockCanvasUse();
   alert("game has started");
 };
