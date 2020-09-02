@@ -268,7 +268,11 @@ require("./chat.js");
 require("./canvas.js");
 
 require("./update.js");
+<<<<<<< HEAD
 //# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZha2VfMTEyMTExZC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBOztBQUNBOztBQUNBOztBQUNBOztBQUNBOztBQUNBIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFwiLi9zb2NrZXQuanNcIjtcbmltcG9ydCBcIi4vbG9naW4uanNcIjtcbmltcG9ydCBcIi4vbm90aWZpY2F0aW9ucy5qc1wiO1xuaW1wb3J0IFwiLi9jaGF0LmpzXCI7XG5pbXBvcnQgXCIuL2NhbnZhcy5qc1wiO1xuaW1wb3J0IFwiLi91cGRhdGUuanNcIjtcbiJdfQ==
+=======
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZha2VfNWM5NjkzZC5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUFBOztBQUNBOztBQUNBOztBQUNBOztBQUNBOztBQUNBIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFwiLi9zb2NrZXQuanNcIjtcbmltcG9ydCBcIi4vbG9naW4uanNcIjtcbmltcG9ydCBcIi4vbm90aWZpY2F0aW9ucy5qc1wiO1xuaW1wb3J0IFwiLi9jaGF0LmpzXCI7XG5pbXBvcnQgXCIuL2NhbnZhcy5qc1wiO1xuaW1wb3J0IFwiLi91cGRhdGUuanNcIjtcbiJdfQ==
+>>>>>>> b0196aa5836d02b6250b65835a740bedb96b83e8
 },{"./canvas.js":1,"./chat.js":2,"./login.js":4,"./notifications.js":5,"./socket.js":6,"./update.js":7}],4:[function(require,module,exports){
 "use strict";
 
