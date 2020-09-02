@@ -7,6 +7,7 @@ const fillandPaintBtn = document.getElementById("jsFillBtn");
 const saveBtn = document.getElementById("jsSaveBtn");
 const body = document.getElementById("body");
 const resetBtn = document.getElementById("jsResetBtn");
+const controls = document.getElementById("jsControls");
 
 const DEFAULT_COLOR = "black";
 const CANVAS_SIZE = 550;
@@ -112,8 +113,6 @@ function handleFirstBtnClick() {
 
 function handleCanvasClick(color) {
   const currentFillColor = ctx.fillStyle;
-  console.log(`${currentFillColor} and ${color}`);
-  console.log(filling);
   ctx.fillStyle = color;
   if (filling) {
     ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
@@ -182,4 +181,32 @@ export const handleFillPaintBtnClick = ({ color }) => {
 
 export const handleResetBtnClickForSocket = () => {
   reset();
+};
+
+export const blockCanvasUse = () => {
+  controls.style.opacity = 0;
+  canvas.removeEventListener("mousemove", onMouseMove);
+  canvas.removeEventListener("mousedown", onMouseDown);
+  canvas.removeEventListener("mouseup", onMouseUp);
+  canvas.removeEventListener("mouseleave", stopPainting);
+  canvas.removeEventListener("click", handleCanvasClick);
+  canvas.removeEventListener("contextmenu", handleCmCLick);
+  range.removeEventListener("input", handleRangeValue);
+  fillandPaintBtn.removeEventListener("click", handleFirstBtnClick);
+  saveBtn.removeEventListener("click", handleSaveBtnClick);
+  resetBtn.removeEventListener("click", handleResetBtnClick);
+};
+
+export const enableCanvasUse = () => {
+  controls.style.opacity = 1;
+  canvas.addEventListener("mousemove", onMouseMove);
+  canvas.addEventListener("mousedown", onMouseDown);
+  canvas.addEventListener("mouseup", onMouseUp);
+  canvas.addEventListener("mouseleave", stopPainting);
+  canvas.addEventListener("click", handleCanvasClick);
+  canvas.addEventListener("contextmenu", handleCmCLick);
+  range.addEventListener("input", handleRangeValue);
+  fillandPaintBtn.addEventListener("click", handleFirstBtnClick);
+  saveBtn.addEventListener("click", handleSaveBtnClick);
+  resetBtn.addEventListener("click", handleResetBtnClick);
 };

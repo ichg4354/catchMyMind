@@ -20,14 +20,14 @@ canvas {
   box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   margin-bottom: 30px;
 }
-.control__controls {
+.controls__control {
   display: flex;
   justify-content: center;
   align-content: center;
   text-align: center;
   flex-direction: column;
 }
-.control__controls .control_btns button {
+.contros__control .control_btns button {
   all: unset;
   padding: 5px 7px;
   background-color: white;

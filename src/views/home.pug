@@ -15,23 +15,23 @@ html(lang="en")
         .body__canvasContainer
             .canvasContainer
                 canvas#jsCanvas  
-                .control__controls
-                .control_range
-                    input#jsRange(type='range', min='0.1', max='5', step='0.1', value='2.5')
-                .control_btns
-                    button#jsFillBtn FILL
-                    button#jsResetBtn RESET
-                    button#jsSaveBtn SAVE
-                .control__colors
-                    .control__color.jsColor(style='background-color: black;')
-                    .control__color.jsColor(style='background-color: white;')
-                    .control__color.jsColor(style='background-color: red;')
-                    .control__color.jsColor(style='background-color: orange;')
-                    .control__color.jsColor(style='background-color: yellow;')
-                    .control__color.jsColor(style='background-color: green;')
-                    .control__color.jsColor(style='background-color: blue;')
-                    .control__color.jsColor(style='background-color: darkblue;')
-                    .control__color.jsColor(style='background-color: purple;')
+                .controls__control#jsControls
+                    .control_range
+                        input#jsRange(type='range', min='0.1', max='5', step='0.1', value='2.5')
+                    .control_btns
+                        button#jsFillBtn FILL
+                        button#jsResetBtn RESET
+                        button#jsSaveBtn SAVE
+                    .control__colors
+                        .control__color.jsColor(style='background-color: black;')
+                        .control__color.jsColor(style='background-color: white;')
+                        .control__color.jsColor(style='background-color: red;')
+                        .control__color.jsColor(style='background-color: orange;')
+                        .control__color.jsColor(style='background-color: yellow;')
+                        .control__color.jsColor(style='background-color: green;')
+                        .control__color.jsColor(style='background-color: blue;')
+                        .control__color.jsColor(style='background-color: darkblue;')
+                        .control__color.jsColor(style='background-color: purple;')
         .body__gameContainer
             .gameContainer__chat
                 .chat__chats

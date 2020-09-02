@@ -16,13 +16,13 @@ export const handleSocketConnection = (socket, io) => {
     return leader;
   };
 
-  const startGame = () => {
+  const startGame = async () => {
     if (gameStatus === false) {
       gameStatus = true;
       let leader = setLeader();
       let word = chooseRandomWord();
+      await superBroadcast("gameStart");
       io.to(leader.id).emit("notifyLeader", { word });
-      superBroadcast("gameStart");
     }
   };
 
