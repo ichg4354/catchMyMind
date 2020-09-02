@@ -1,5 +1,6 @@
 import events from "./events.js";
 import express from "express";
+import { chooseRandomWord } from "./words.js";
 
 let sockets = [];
 
@@ -8,6 +9,11 @@ export const handleSocketConnection = (socket, io) => {
   const superBroadcast = (events, data) => io.emit(events, data);
 
   const sendUpdate = () => superBroadcast("update", { sockets });
+
+  const setLeader = () => {
+    const Leader = sockets[Math.floor(Math.random() * sockets.length)];
+    console.log(Leader.nickName);
+  };
 
   socket.on("setNickname", function ({ nickName }) {
     sockets.push({ id: socket.id, nickName: nickName, points: 0 });

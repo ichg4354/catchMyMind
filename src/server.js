@@ -3,6 +3,7 @@ import socketIO from "socket.io";
 import logger from "morgan";
 import { handleSocketConnection } from "./socketController.js";
 import events from "./events.js";
+import words from "./words.js";
 
 const port = 1001;
 
