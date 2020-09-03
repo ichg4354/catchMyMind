@@ -10,6 +10,8 @@ const NICKNAME = "nickName";
 
 const nickName = localStorage.getItem(NICKNAME);
 
+let loggedIn = false;
+
 const login = (nickName) => {
   window.socket = io.connect("/");
   window.socket.emit("setNickname", { nickName: nickName });
@@ -21,6 +23,8 @@ const handleLoginFormSubmit = (e) => {
   localStorage.setItem(NICKNAME, `${newNickName}`);
   loginInput.value = "";
   login(newNickName);
+  console.log("Login1");
+  loggedIn = true;
 };
 
 loginForm.addEventListener("submit", handleLoginFormSubmit);
@@ -30,4 +34,5 @@ if (nickName == null) {
 } else {
   body.className = LOGGED_IN;
   login(nickName);
+  console.log("login2");
 }

@@ -32,11 +32,15 @@ export const handleSocketConnection = (socket, io) => {
     superBroadcast("gameEnd");
   };
 
+  const resetSockets = () => {
+    sockets = [];
+  };
   socket.on("setNickname", function ({ nickName }) {
     sockets.push({ id: socket.id, nickName: nickName, points: 0 });
     console.log(`${nickName} connected`);
     socket.nickName = nickName;
     broadcast("newUser", { nickName });
+    console.log(sockets);
     sendUpdate();
     if (sockets.length > 1) {
       startGame();
