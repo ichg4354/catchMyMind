@@ -4,6 +4,7 @@ import { chooseRandomWord } from "./words.js";
 
 let sockets = [];
 let gameStatus = false;
+let leader = null;
 
 export const handleSocketConnection = (socket, io) => {
   const broadcast = (event, data) => socket.broadcast.emit(event, data);
@@ -19,7 +20,7 @@ export const handleSocketConnection = (socket, io) => {
   const startGame = async () => {
     if (gameStatus === false) {
       gameStatus = true;
-      let leader = setLeader();
+      leader = setLeader();
       let word = chooseRandomWord();
       await superBroadcast("gameStart");
       io.to(leader.id).emit("notifyLeader", { word });
@@ -28,7 +29,9 @@ export const handleSocketConnection = (socket, io) => {
 
   const stopGame = () => {
     gameStatus = false;
+    superBroadcast("gameEnd");
   };
+
   socket.on("setNickname", function ({ nickName }) {
     sockets.push({ id: socket.id, nickName: nickName, points: 0 });
     console.log(`${nickName} connected`);
@@ -53,6 +56,10 @@ export const handleSocketConnection = (socket, io) => {
     sendUpdate();
     if (sockets.length <= 1) {
       stopGame();
+    } else if (leader) {
+      if (leader.id == socket.id) {
+        stopGame();
+      }
     }
   });
 

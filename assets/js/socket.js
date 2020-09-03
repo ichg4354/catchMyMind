@@ -6,8 +6,12 @@ import {
   handleFillPaintBtnClick,
   handleResetBtnClickForSocket,
 } from "./canvas.js";
-import { handleGameStart, handleNotifyLeader } from "./player.js";
-import { handleUpdate } from "./update";
+import {
+  handleGameStart,
+  handleNotifyLeader,
+  handleGameEnd,
+} from "./player.js";
+import { handleUpdate } from "./update.js";
 export const getSocket = () => window.socket;
 
 export const initSocket = () => {
@@ -22,4 +26,5 @@ export const initSocket = () => {
   socket.on("update", handleUpdate);
   socket.on("notifyLeader", handleNotifyLeader);
   socket.on("gameStart", handleGameStart);
+  socket.on("gameEnd", handleGameEnd);
 };
