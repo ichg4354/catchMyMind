@@ -1,15 +1,21 @@
 import { blockCanvasUse, enableCanvasUse } from "./canvas";
 import { reset } from "./canvas.js";
 
+const notification = document.getElementById("jsNotification");
+
 export const handleGameStart = () => {
-  console.log("game has started");
+  fillNotification("Game has started");
   reset();
   blockCanvasUse();
-  alert("game has started");
 };
 
 export const handleNotifyLeader = ({ word }) => {
-  console.log(`you are the leader your word:${word}`);
+  fillNotification(`You are the leader! Your word:${word}`);
   enableCanvasUse();
-  alert(`you are the leader your word is ${word}`);
 };
+
+const fillNotification = (word) => {
+  resetNotification();
+  notification.innerText = word;
+};
+const resetNotification = () => (notification.innerText = "");

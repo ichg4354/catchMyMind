@@ -143,19 +143,6 @@ function handleResetBtnClick() {
   reset();
 }
 
-if (canvas) {
-  canvas.addEventListener("mousemove", onMouseMove);
-  canvas.addEventListener("mousedown", onMouseDown);
-  canvas.addEventListener("mouseup", onMouseUp);
-  canvas.addEventListener("mouseleave", stopPainting);
-  canvas.addEventListener("click", handleCanvasClick);
-  canvas.addEventListener("contextmenu", handleCmCLick);
-  range.addEventListener("input", handleRangeValue);
-  fillandPaintBtn.addEventListener("click", handleFirstBtnClick);
-  saveBtn.addEventListener("click", handleSaveBtnClick);
-  resetBtn.addEventListener("click", handleResetBtnClick);
-}
-
 Array.from(colors).forEach((color) => {
   const COLOR = color;
   COLOR.addEventListener("click", changeColor),
@@ -183,8 +170,11 @@ export const handleResetBtnClickForSocket = () => {
   reset();
 };
 
+const hideControls = () => (controls.style.opacity = 0);
+const showControls = () => (controls.style.opacity = 1);
+
 export const blockCanvasUse = () => {
-  controls.style.opacity = 0;
+  hideControls();
   canvas.removeEventListener("mousemove", onMouseMove);
   canvas.removeEventListener("mousedown", onMouseDown);
   canvas.removeEventListener("mouseup", onMouseUp);
@@ -198,7 +188,7 @@ export const blockCanvasUse = () => {
 };
 
 export const enableCanvasUse = () => {
-  controls.style.opacity = 1;
+  showControls();
   canvas.addEventListener("mousemove", onMouseMove);
   canvas.addEventListener("mousedown", onMouseDown);
   canvas.addEventListener("mouseup", onMouseUp);
@@ -210,3 +200,7 @@ export const enableCanvasUse = () => {
   saveBtn.addEventListener("click", handleSaveBtnClick);
   resetBtn.addEventListener("click", handleResetBtnClick);
 };
+
+if (canvas) {
+  enableCanvasUse();
+}
