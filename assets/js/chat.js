@@ -1,5 +1,6 @@
 import { getSocket } from "./socket";
 
+const jsChatContainer = document.getElementById("jsChatContainer");
 const jsSendTextForm = document.getElementById("jsSendTextForm");
 const jsSendText = document.getElementById("jsSendText");
 const jsTextUl = document.getElementById("jsChatUl");
@@ -22,5 +23,8 @@ const handleSendTextFormSubmit = (e) => {
   createMessage("You", value, "sended");
   jsSendText.value = "";
 };
+
+export const disableChat = () => (jsChatContainer.style.display = "none");
+export const enableChat = () => (jsChatContainer.style.display = "block");
 
 jsSendTextForm.addEventListener("submit", handleSendTextFormSubmit);

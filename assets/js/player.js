@@ -1,5 +1,6 @@
 import { blockCanvasUse, enableCanvasUse } from "./canvas";
 import { reset } from "./canvas.js";
+import { disableChat, enableChat } from "./chat.js";
 
 const notification = document.getElementById("jsNotification");
 
@@ -8,11 +9,13 @@ export const handleGameStart = () => {
   fillNotification("Game has started");
   reset();
   blockCanvasUse();
+  enableChat();
 };
 
 export const handleNotifyLeader = ({ word }) => {
   fillNotification(`You are the leader! Your word --> ${word}`);
   enableCanvasUse();
+  disableChat();
 };
 
 const fillNotification = (word) => {
