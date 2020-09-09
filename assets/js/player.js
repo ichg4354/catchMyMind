@@ -10,6 +10,7 @@ export const handleGameStart = () => {
   fillNotification("Game has started");
   reset();
   blockCanvasUse();
+  enableChat();
 };
 
 export const handleNotifyLeader = ({ word }) => {
@@ -17,6 +18,7 @@ export const handleNotifyLeader = ({ word }) => {
   resetNotification();
   fillNotification(`You are the leader! Your word --> ${word}`);
   enableCanvasUse();
+  disableChat();
 };
 
 const fillNotification = (word) => {
