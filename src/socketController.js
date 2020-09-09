@@ -66,8 +66,9 @@ export const handleSocketConnection = (socket, io) => {
   socket.on("message", function ({ message }) {
     if ((word = message)) {
       const newSocket = sockets.map((each) => {
-        if (each.id = socket.id) {
-          map()
+        if ((each.id = socket.id)) {
+          sockets.
+          return (each.points += 1);
         }
       });
     } else {
