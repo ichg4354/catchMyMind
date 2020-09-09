@@ -17,13 +17,13 @@ export const handleSocketConnection = (socket, io) => {
     return leader;
   };
 
-  const startGame = async () => {
+  const startGame = () => {
     if (gameStatus === false) {
       gameStatus = true;
       leader = setLeader();
       let word = chooseRandomWord();
-      await superBroadcast("gameStart");
-      io.to(leader.id).emit("notifyLeader", { word });
+      superBroadcast("gameStart");
+      setTimeout(() => io.to(leader.id).emit("notifyLeader", { word }), 3000);
     }
   };
 
@@ -32,9 +32,6 @@ export const handleSocketConnection = (socket, io) => {
     superBroadcast("gameEnd");
   };
 
-  const resetSockets = () => {
-    sockets = [];
-  };
   socket.on("setNickname", function ({ nickName }) {
     sockets.push({ id: socket.id, nickName: nickName, points: 0 });
     console.log(`${nickName} connected`);
@@ -46,7 +43,7 @@ export const handleSocketConnection = (socket, io) => {
       startGame();
       console.log("more than one user is here! game start");
     } else {
-      console.log("not enough plater is connected");
+      console.log("not enough player is connected");
     }
   });
 
@@ -91,4 +88,3 @@ export const handleSocketConnection = (socket, io) => {
     broadcast("resetBtnClick");
   });
 };
-

@@ -314,7 +314,7 @@ require("./canvas.js");
 require("./update.js");
 
 require("./player.js");
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZha2VfNjg4NjIwZTMuanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQSIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBcIi4vc29ja2V0LmpzXCI7XG5pbXBvcnQgXCIuL2xvZ2luLmpzXCI7XG5pbXBvcnQgXCIuL25vdGlmaWNhdGlvbnMuanNcIjtcbmltcG9ydCBcIi4vY2hhdC5qc1wiO1xuaW1wb3J0IFwiLi9jYW52YXMuanNcIjtcbmltcG9ydCBcIi4vdXBkYXRlLmpzXCI7XG5pbXBvcnQgXCIuL3BsYXllci5qc1wiO1xuIl19
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImZha2VfYjQ5ZTdkZjguanMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQTs7QUFDQSIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBcIi4vc29ja2V0LmpzXCI7XG5pbXBvcnQgXCIuL2xvZ2luLmpzXCI7XG5pbXBvcnQgXCIuL25vdGlmaWNhdGlvbnMuanNcIjtcbmltcG9ydCBcIi4vY2hhdC5qc1wiO1xuaW1wb3J0IFwiLi9jYW52YXMuanNcIjtcbmltcG9ydCBcIi4vdXBkYXRlLmpzXCI7XG5pbXBvcnQgXCIuL3BsYXllci5qc1wiO1xuIl19
 },{"./canvas.js":1,"./chat.js":2,"./login.js":4,"./notifications.js":5,"./player.js":6,"./socket.js":7,"./update.js":8}],4:[function(require,module,exports){
 "use strict";
 
