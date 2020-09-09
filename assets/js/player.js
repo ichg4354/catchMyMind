@@ -5,6 +5,7 @@ import { disableChat, enableChat } from "./chat.js";
 const notification = document.getElementById("jsNotification");
 
 export const handleGameStart = () => {
+  console.log("handlegamestart");
   resetNotification();
   fillNotification("Game has started");
   reset();
@@ -12,9 +13,10 @@ export const handleGameStart = () => {
 };
 
 export const handleNotifyLeader = ({ word }) => {
+  console.log(word);
+  resetNotification();
   fillNotification(`You are the leader! Your word --> ${word}`);
   enableCanvasUse();
-  // disableChat();
 };
 
 const fillNotification = (word) => {
@@ -27,7 +29,6 @@ export const handleGameEnd = () => {
   fillNotification("Game has ended");
   reset();
   blockCanvasUse();
-  enableChat();
 };
 
 const resetNotification = () => (notification.innerText = "");

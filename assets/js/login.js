@@ -10,8 +10,6 @@ const NICKNAME = "nickName";
 
 const nickName = localStorage.getItem(NICKNAME);
 
-window.loggedIn = "no";
-
 const login = (nickName) => {
   window.socket = io.connect("/");
   window.socket.emit("setNickname", { nickName: nickName });
@@ -19,12 +17,13 @@ const login = (nickName) => {
 };
 
 const handleLoginFormSubmit = (e) => {
+  e.preventDefault();
   const newNickName = loginInput.value;
   localStorage.setItem(NICKNAME, `${newNickName}`);
   loginInput.value = "";
   login(newNickName);
+  body.className = LOGGED_IN;
   console.log("Login1");
-  window.loggedIn = "yes";
 };
 
 loginForm.addEventListener("submit", handleLoginFormSubmit);
@@ -33,8 +32,6 @@ if (nickName == null) {
   body.className = LOGGED_OUT;
 } else {
   body.className = LOGGED_IN;
-  if (loggedIn == "no") {
-    login(nickName);
-    console.log("Login2");
-  }
+  login(nickName);
+  console.log("Login2");
 }

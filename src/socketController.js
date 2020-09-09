@@ -17,13 +17,13 @@ export const handleSocketConnection = (socket, io) => {
     return leader;
   };
 
-  const startGame = () => {
+  const startGame = async () => {
     if (gameStatus === false) {
       gameStatus = true;
       leader = setLeader();
       let word = chooseRandomWord();
-      superBroadcast("gameStart");
-      setTimeout(() => io.to(leader.id).emit("notifyLeader", { word }), 3000);
+      await superBroadcast("gameStart");
+      io.to(leader.id).emit("notifyLeader", { word });
     }
   };
 
@@ -37,13 +37,13 @@ export const handleSocketConnection = (socket, io) => {
     console.log(`${nickName} connected`);
     socket.nickName = nickName;
     broadcast("newUser", { nickName });
-    console.log(sockets);
     sendUpdate();
     if (sockets.length > 1) {
       startGame();
-      console.log("more than one user is here! game start");
+      console.log("startgame");
     } else {
-      console.log("not enough player is connected");
+      stopGame();
+      console.log("endgame");
     }
   });
 
