@@ -24,6 +24,8 @@ const handleSendTextFormSubmit = (e) => {
   jsSendText.value = "";
 };
 
+console.log(window.word);
+
 export const disableChat = () => (jsChatContainer.style.display = "none");
 export const enableChat = () => (jsChatContainer.style.display = "block");
 
