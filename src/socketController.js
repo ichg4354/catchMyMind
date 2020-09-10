@@ -63,14 +63,19 @@ export const handleSocketConnection = (socket, io) => {
     }
   });
 
+  const addPoints = (id) => {
+    sockets = sockets.map((socket) => {
+      if (socket.id == id) {
+        socket.points += 10;
+      }
+      return socket;
+    });
+  };
+
   socket.on("message", function ({ message }) {
     if ((word = message)) {
-      const newSocket = sockets.map((each) => {
-        if ((each.id = socket.id)) {
-          sockets.
-          return (each.points += 1);
-        }
-      });
+      addPoints(socket.id);
+      sendUpdate();
     } else {
       console.log("fail");
     }
