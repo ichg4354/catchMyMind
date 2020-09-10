@@ -76,13 +76,20 @@ export const handleSocketConnection = (socket, io) => {
     if ((word = message)) {
       addPoints(socket.id);
       sendUpdate();
+      superBroadcast("pointAdded", socket.nickName);
+      broadcast("newMessage", {
+        nickName: "Bot",
+        message: `${socket.nickName} WON👏🏼 the word was: ${word}`,
+      });
+      stopGame();
+      superBroadcast("gameStartSoon");
+      setTimeout(() => startGame(), 3000);
     } else {
-      console.log("fail");
+      broadcast("newMessage", {
+        nickName: socket.nickName,
+        message: message,
+      });
     }
-    broadcast("newMessage", {
-      nickName: socket.nickName,
-      message: message,
-    });
   });
 
   socket.on("mouseMoved", function ({ x, y, color, brushSize }) {

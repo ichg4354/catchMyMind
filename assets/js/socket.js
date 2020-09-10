@@ -10,6 +10,8 @@ import {
   handleGameStart,
   handleNotifyLeader,
   handleGameEnd,
+  handleGameStartSoon
+
 } from "./player.js";
 import { handleUpdate } from "./update.js";
 export const getSocket = () => window.socket;
@@ -27,4 +29,5 @@ export const initSocket = () => {
   socket.on("notifyLeader", handleNotifyLeader);
   socket.on("gameStart", handleGameStart);
   socket.on("gameEnd", handleGameEnd);
+  socket.on('gameStartSoon',handleGameStartSoon)
 };

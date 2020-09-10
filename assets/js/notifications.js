@@ -8,6 +8,7 @@ export const handleUserDisconenct = ({ nickName }) => {
   sendAlert(`${nickName} has Left`, "rgb(255, 149, 0)");
 };
 
+
 const sendAlert = (text, color) => {
   const notification = document.createElement("div");
   const span = document.createElement("span");

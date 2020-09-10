@@ -4,7 +4,6 @@ import { disableChat, enableChat } from "./chat.js";
 
 const notification = document.getElementById("jsNotification");
 
-
 export const handleGameStart = () => {
   console.log("handlegamestart");
   resetNotification();
@@ -34,4 +33,7 @@ export const handleGameEnd = () => {
   blockCanvasUse();
 };
 
+export const handleGameStartSoon = () => {
+  fillNotification("Game will start soon..");
+};
 const resetNotification = () => (notification.innerText = "");
