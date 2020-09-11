@@ -30,7 +30,7 @@ export const handleSocketConnection = (socket, io) => {
   };
 
   const setGameTime = async () => {
-    timeOutId = setTimeout(() => stopGame(), 5000);
+    timeOutId = setTimeout(() => stopGame(), 15000);
   };
 
   const startGame = () => {
@@ -44,9 +44,9 @@ export const handleSocketConnection = (socket, io) => {
     }
   };
 
-  const stopGame = () => {
+  const stopGame = async () => {
     gameStatus = false;
-    superBroadcast("gameEnd");
+    await superBroadcast("gameEnd");
     restartGame();
   };
 
