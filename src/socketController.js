@@ -20,17 +20,18 @@ export const handleSocketConnection = (socket, io) => {
     return leader;
   };
 
-  const restartGame = () => {
-    console.log("restartGame function start");
+  const restartGame = async () => {
     if (sockets.length > 1) {
       console.log("startgame fnction about to start");
       superBroadcast("gameStartSoon");
-      setTimeout(() => startGame(), 3000);
+      superBroadcast("gameEnd");
+      setTimeout(() => superBroadcast("gameStartSoon"), 2000);
+      setTimeout(() => startGame(), 4000);
     }
   };
 
   const setGameTime = async () => {
-    timeOutId = setTimeout(() => stopGame(), 15000);
+    timeOutId = setTimeout(() => stopGame(), 7000);
   };
 
   const startGame = () => {
@@ -44,9 +45,10 @@ export const handleSocketConnection = (socket, io) => {
     }
   };
 
-  const stopGame = async () => {
+  const stopGame = () => {
     gameStatus = false;
-    await superBroadcast("gameEnd");
+    superBroadcast("gameEnd");
+    clearTimeout(timeOutId);
     restartGame();
   };
 
