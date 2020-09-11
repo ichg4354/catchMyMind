@@ -19,6 +19,16 @@ export const handleSocketConnection = (socket, io) => {
     return leader;
   };
 
+  const restartGame = () => {
+    if (sockets.length <= 1) {
+      stopGame();
+    } else if (leader) {
+      if (leader.id == socket.id) {
+        stopGame();
+      }
+    }
+  };
+
   const setGameTime = () => {
     timeOutId = setTimeout(() => stopGame(), 5000);
   };
@@ -46,11 +56,7 @@ export const handleSocketConnection = (socket, io) => {
     socket.nickName = nickName;
     broadcast("newUser", { nickName });
     sendUpdate();
-    if (sockets.length > 1) {
-      startGame();
-    } else {
-      stopGame();
-    }
+    restartGame();
   });
 
   socket.on("disconnect", function () {
