@@ -6,6 +6,7 @@ let sockets = [];
 let gameStatus = false;
 let leader = null;
 let word = null;
+let timeOutId = null;
 
 export const handleSocketConnection = (socket, io) => {
   const broadcast = (event, data) => socket.broadcast.emit(event, data);
@@ -18,6 +19,10 @@ export const handleSocketConnection = (socket, io) => {
     return leader;
   };
 
+  const setGameTime = () => {
+    timeOutId = setTimeout(() => stopGame(), 5000);
+  };
+
   const startGame = () => {
     if (gameStatus === false) {
       gameStatus = true;
@@ -25,12 +30,14 @@ export const handleSocketConnection = (socket, io) => {
       word = chooseRandomWord();
       superBroadcast("gameStart");
       setTimeout(() => io.to(leader.id).emit("notifyLeader", { word }), 2000);
+      setGameTime();
     }
   };
 
   const stopGame = () => {
     gameStatus = false;
     superBroadcast("gameEnd");
+    clearTimeout(timeOutId);
   };
 
   socket.on("setNickname", function ({ nickName }) {
