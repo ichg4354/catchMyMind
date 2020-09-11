@@ -1,6 +1,7 @@
 import events from "./events.js";
 import express from "express";
 import { chooseRandomWord } from "./words.js";
+import { restart } from "nodemon";
 
 let sockets = [];
 let gameStatus = false;
@@ -20,16 +21,15 @@ export const handleSocketConnection = (socket, io) => {
   };
 
   const restartGame = () => {
-    if (sockets.length <= 1) {
-      stopGame();
-    } else if (leader) {
-      if (leader.id == socket.id) {
-        stopGame();
-      }
+    console.log("restartGame function start");
+    if (sockets.length > 1) {
+      console.log("startgame fnction about to start");
+      superBroadcast("gameStartSoon");
+      setTimeout(() => startGame(), 3000);
     }
   };
 
-  const setGameTime = () => {
+  const setGameTime = async () => {
     timeOutId = setTimeout(() => stopGame(), 5000);
   };
 
@@ -47,7 +47,7 @@ export const handleSocketConnection = (socket, io) => {
   const stopGame = () => {
     gameStatus = false;
     superBroadcast("gameEnd");
-    clearTimeout(timeOutId);
+    restartGame();
   };
 
   socket.on("setNickname", function ({ nickName }) {
@@ -56,7 +56,11 @@ export const handleSocketConnection = (socket, io) => {
     socket.nickName = nickName;
     broadcast("newUser", { nickName });
     sendUpdate();
-    restartGame();
+    if (sockets.length > 1) {
+      startGame();
+    } else {
+      stopGame();
+    }
   });
 
   socket.on("disconnect", function () {
@@ -95,8 +99,8 @@ export const handleSocketConnection = (socket, io) => {
         message: `${socket.nickName} WON👏🏼 the word was: ${word}`,
       });
       stopGame();
-      superBroadcast("gameStartSoon");
-      setTimeout(() => startGame(), 3000);
+      // superBroadcast("gameStartSoon");
+      // setTimeout(() => startGame(), 3000);
     } else {
       broadcast("newMessage", {
         nickName: socket.nickName,
