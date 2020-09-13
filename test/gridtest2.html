@@ -6,14 +6,14 @@
     <title>Document</title>
     <style>
       .grid {
+        height: 100vh;
+        width: 100vw;
         display: grid;
-        grid-template-columns: 30vw 30vw 30vw 10vw ;
-        grid-template-rows: 10vh repeat(2, 40vh) 10vh;
-        grid-template-areas:
-          "header header header header"
-          "main main main nav"
-          "main main main nav"
-          "footer footer footer footer";
+        grid-template:
+          "header header header header" 1fr
+          "main main main nav" 3fr
+          "main main main nav" 3fr
+          "footer footer footer footer" 1fr / 1fr 1fr 1fr 1fr;
       }
       .header {
         background-color: aqua;
