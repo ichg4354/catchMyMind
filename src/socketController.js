@@ -3,6 +3,8 @@ import express from "express";
 import { chooseRandomWord } from "./words.js";
 import { restart } from "nodemon";
 
+const GAMERUNTIME = 30000;
+
 let sockets = [];
 let gameStatus = false;
 let leader = null;
@@ -31,7 +33,7 @@ export const handleSocketConnection = (socket, io) => {
   };
 
   const setGameTime = async () => {
-    timeOutId = setTimeout(() => stopGame(), 7000);
+    timeOutId = setTimeout(() => stopGame(), GAMERUNTIME);
   };
 
   const startGame = () => {

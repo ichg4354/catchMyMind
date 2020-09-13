@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(4, 25vw);
+        grid-template-rows: 10vh repeat(2, 40vh) 10vh;
+        grid-template-areas:
+          "header header header header"
+          "main main main nav"
+          "main main main nav"
+          "footer footer footer footer";
+      }
+      .header {
+        background-color: aqua;
+        grid-area: header;
+      }
+      .main {
+        background-color: blueviolet;
+        grid-area: main;
+      }
+      .nav {
+        background-color: burlywood;
+        grid-area: nav;
+      }
+      .footer {
+        background-color: coral;
+        grid-area: footer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="header"></div>
+      <div class="main"></div>
+      <div class="nav"></div>
+      <div class="footer"></div>
+    </div>
+  </body>
+</html>
