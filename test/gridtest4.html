@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        width: 100vw;
+        height: 500vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .grid1 {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        margin-bottom: 100px;
+      }
+      .grid2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        margin-bottom: 100px;
+      }
+      .grid3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
+      }
+      .item:nth-child(even) {
+        background-color: aqua;
+        height: 100px;
+      }
+      .item:nth-child(odd) {
+        background-color: peachpuff;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid1">
+      <div class="item">1</div>
+      <div class="item">1</div>
+      <div class="item">1</div>
+      <div class="item">1</div>
+      <div class="item">1</div>
+      <div class="item">1</div>
+      <div class="item">1</div>
+    </div>
+    <div class="grid2">
+      <div class="item">1</div>
+      <div class="item">1</div>
+      <div class="item">1</div>
+      <div class="item">1</div>
+      <div class="item">1</div>
+      <div class="item">1</div>
+      <div class="item">1</div>
+    </div>
+    <div class="grid3">
+      <div class="item">1 asdfasdf a fasddas as asdasdf a</div>
+      <div class="item">1 asdf as sfasd as fsf sd asd</div>
+      <div class="item">1 as s sgsdgasdfasfd as sfaf as d</div>
+      <div class="item">1</div>
+      <div class="item">1</div>
+      <div class="item">1</div>
+      <div class="item">1</div>
+    </div>
+  </body>
+</html>
